@@ -30,7 +30,7 @@
 # Check whether the template variable is used or not
 # template_var would contain the full path of the config file to use
 # If used, run master.py with the path supplied as an argument
-TEMPLATE_VAR="/home/hp/Desktop/SCADASim/configs/test_config.yaml"
+TEMPLATE_VAR="/home/hp/Desktop/SCADASim/configs/water_treatment_config.yaml"
 if [ "$TEMPLATE_VAR" = "" ]; then
     echo "No template variable found on the vmx file. Using hard-coded value"
     # load in data from master.py using hard-coded config textfile

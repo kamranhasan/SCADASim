@@ -135,16 +135,16 @@ random_coil_dependent() will update registers/coils in a linear function until i
 def random_coil_dependent(variance, max, rand_min, rand_max, time, address, slave_id, count, context, log, my_backup, coil_address, default_coil_value):
     try:
 	# false until max is reached
-	at_max = False
+        at_max = False
         while(True):
             sleep(time)
             coil_reg = read_co_register(context[0], slave_id, coil_address, 1)
             # the datastore helper functions return a list, even if it is just one register being read
             coil_reg = coil_reg[0]
-	    values = read_hr_register(context[0], slave_id, address, count)
-	    # checking to see if max value was reached to begin random data variance
-	    if(values[0] >= max):
-	        at_max = True
+            values = read_hr_register(context[0], slave_id, address, count)
+            # checking to see if max value was reached to begin random data variance
+            if(values[0] >= max):
+                at_max = True
             # check the state of the coil
             if coil_reg == "false" or int(coil_reg) == 0:
                 coil_val = 0
@@ -153,10 +153,10 @@ def random_coil_dependent(variance, max, rand_min, rand_max, time, address, slav
             # compare the current state of the coil to the default coil value
             if coil_val == int(default_coil_value):
                 # if at max select random int
-		if(at_max == True):
-		    values[0] = randint(rand_min, rand_max)
-		# check to see if exceeded max                
-		elif(values[0] >= max):
+                if(at_max == True):
+                    values[0] = randint(rand_min, rand_max)
+                # check to see if exceeded max                
+                elif(values[0] >= max):
                     values[0] = max
                 else:
                     values[0] = values[0] + variance
@@ -170,11 +170,11 @@ def random_coil_dependent(variance, max, rand_min, rand_max, time, address, slav
                     if v <= 0:
                         all_greaterthan_0 = False
                 if all_greaterthan_0:
-		    # no longer at max value, do not do random variance
-		    at_max = False
-		    values = [v + (variance*-1) for v in values]
-		    if(values[0] < 0):
-		        values[0] = 0
+                    # no longer at max value, do not do random variance
+                    at_max = False
+                    values = [v + (variance*-1) for v in values]
+                    if(values[0] < 0):
+                        values[0] = 0
                     write_hr_register(context[0], slave_id, address, values)
                 log.debug(values)
     except:
@@ -222,7 +222,7 @@ def fuel_tank_behavior(min, max, time, address, slave_id, count, context, log, m
                 write_co_register(context[0], slave_id, address, coil_values)
 
                 sleep_val = 875
-		# sleep for about 15 minutes, depending on whether we decremented or also incremented
+                # sleep for about 15 minutes, depending on whether we decremented or also incremented
                 sleep(sleep_val)
                 # increment behavior - refill tank to 100% about every hour
                 if i == 1:
@@ -247,7 +247,7 @@ def fuel_tank_behavior(min, max, time, address, slave_id, count, context, log, m
                     write_co_register(context[0], slave_id, address, coil_values)
 
                     sleep_val = 775
-		    sleep(900)            
+                    sleep(900)            
     except:
         sys.exit()
 

@@ -1,1 +1,1 @@
-/home/hp/Desktop/SCADASim/configs/test_config.yaml
+~/Desktop/SCADASim/configs/water_treatment_config.yaml
