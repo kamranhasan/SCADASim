@@ -10,7 +10,7 @@ DATASTORE:
   hr:
     start_addr: 1
     values:
-    - 90
+    - 0
   ir:
     start_addr: 1
     values:

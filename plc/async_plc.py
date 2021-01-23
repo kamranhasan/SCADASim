@@ -65,6 +65,7 @@ def run_updating_server(config_list, backup_filename, log):
     # If this is the first time this is used, the backup file will match up with what is laid out in the master config (due to master.py)
     datastore_config = datastore_backup_on_start(backup_filename)
     if datastore_config == -1:
+        print(backup_filename)
         print("Issue with backup file - either not created or empty. Exiting program.")
         sys.exit()
     
@@ -115,7 +116,7 @@ def main():
     print( args )
     num_of_PLC = args.n
     master_config_filename = args.c
-    backup_filename = '/usr/local/bin/scadasim_pymodbus_plc/backups/backup_' + args.n + '.yaml'
+    backup_filename = '/home/hp/Desktop/SCADASim/backups/backup_' + args.n + '.yaml'
     # --- END argparse handling ---
 
     stream = open(master_config_filename, 'r')

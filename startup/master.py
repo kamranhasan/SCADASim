@@ -63,7 +63,7 @@ while(i < num_of_plc):
     ir_values = config_yaml[plc_device_name]['DATASTORE']['ir']['values']
 
     # check if file exists
-    if (path.exists(backup_file_name) == False or path.getsize(backup_file_name) == 0):
+    if (path.exists(backup_file_name) == True or path.getsize(backup_file_name) == 0):
         # create file - only storing the register starting address and values 
         backup_dict = {}
         backup = open(backup_file_name, 'w+')
@@ -73,5 +73,5 @@ while(i < num_of_plc):
     i = i + 1
 
 # return number of backup files created and the config filepath to bash startup script
-print(str(num_of_plc) + ' ' + file_name)
+print(str(num_of_plc)+' '+file_name)
 
